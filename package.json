@@ -1,11 +1,14 @@
 {
   "name": "@guardian/create-src-component",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "license": "Apache-2.0",
   "files": [
     ".bin",
     "component"
   ],
+  "bin": {
+    "create-src-component": "./.bin/create-src-component.js"
+  },
   "devDependencies": {
     "@babel/core": "^7.10.0",
     "@babel/plugin-proposal-class-properties": "^7.8.3",
