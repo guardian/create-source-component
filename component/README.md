@@ -1,19 +1,19 @@
-# `COMPONENT_NAME`
+# `__COMPONENT_NAME__`
 
-📣 For more context and visual guides relating to `COMPONENT_NAME` usage on the [Source Design System website](https://www.theguardian.design/PATH_TO_COMPONENT_DOCS)
+📣 For more context and visual guides relating to `__COMPONENT_NAME__` usage on the [Source Design System website](https://www.theguardian.design)
 
 ## Install
 
 ```sh
-$ yarn add @guardian/src-COMPONENT_NAME
+$ yarn add @guardian/src-__PACKAGE_NAME__
 ```
 
 ## Use
 
 ```js
-import { COMPONENT_NAME } from "@guardian/src-COMPONENT_NAME"
+import { __COMPONENT_NAME__ } from "@guardian/src-__PACKAGE_NAME__"
 
-const Wrapper = () => <COMPONENT_NAME />
+const Wrapper = () => <__COMPONENT_NAME__ />
 ```
 
 ## Props
