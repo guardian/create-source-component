@@ -3,16 +3,18 @@ import { SerializedStyles } from "@emotion/core"
 import { style } from "./styles"
 import { Props } from "@guardian/src-helpers"
 
-interface MyComponentProps extends HTMLAttributes<HTMLDivElement>, Props {
+interface __COMPONENT_NAME__Props
+  extends HTMLAttributes<HTMLDivElement>,
+    Props {
   cssOverrides?: SerializedStyles | SerializedStyles[]
   children: string
 }
 
-const MyComponent = ({
+const __COMPONENT_NAME__ = ({
   cssOverrides,
   children,
   ...props
-}: MyComponentProps) => {
+}: __COMPONENT_NAME__Props) => {
   return (
     <div css={[style, cssOverrides]} {...props}>
       {children}
@@ -22,6 +24,6 @@ const MyComponent = ({
 
 const defaultProps = {}
 
-MyComponent.defaultProps = { ...defaultProps }
+__COMPONENT_NAME__.defaultProps = { ...defaultProps }
 
-export { MyComponent }
+export { __COMPONENT_NAME__ }

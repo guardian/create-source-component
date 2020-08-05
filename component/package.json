@@ -1,9 +1,9 @@
 {
-  "name": "@guardian/src-COMPONENT_NAME",
+  "name": "@guardian/src-__PACKAGE_NAME__",
   "version": "2.1.0",
   "license": "Apache-2.0",
-  "main": "dist/COMPONENT_NAME.js",
-  "module": "dist/COMPONENT_NAME.esm.js",
+  "main": "dist/__PACKAGE_NAME__.js",
+  "module": "dist/__PACKAGE_NAME__.esm.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/guardian/source.git"
