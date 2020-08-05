@@ -1,6 +1,6 @@
 {
   "name": "create-src-component",
-  "version": "2.1.0",
+  "version": "0.0.1",
   "license": "Apache-2.0",
   "devDependencies": {
     "@babel/core": "^7.10.0",
