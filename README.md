@@ -1,1 +1,1 @@
-# create-source-component
+# create-src-component

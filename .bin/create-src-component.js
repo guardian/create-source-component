@@ -15,7 +15,7 @@ if (process.argv.length >= 3) {
 // Need a better solution!
 const clone = spawn("git", [
   "clone",
-  "https://github.com/guardian/create-source-component.git",
+  "https://github.com/guardian/create-src-component.git",
   folderName,
 ])
 
