@@ -1,6 +1,6 @@
 {
   "name": "@guardian/create-src-component",
-  "version": "0.0.3",
+  "version": "0.0.5",
   "license": "Apache-2.0",
   "files": [
     ".bin",
@@ -8,6 +8,9 @@
   ],
   "bin": {
     "create-src-component": "./.bin/create-src-component.js"
+  },
+  "dependencies": {
+    "execa": "^4.0.3"
   },
   "devDependencies": {
     "@babel/core": "^7.10.0",
@@ -25,7 +28,6 @@
     "eslint-config-prettier": "^6.1.0",
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-react": "^7.20.5",
-    "execa": "^4.0.3",
     "prettier": "^2.0.5",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
