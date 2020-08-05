@@ -1,29 +1,69 @@
 #!/usr/bin/env node
 
-const { spawn } = require("child_process")
+const execa = require("execa")
 const fs = require("fs")
+const fsPromises = fs.promises
 
-let folderName = "."
+const camelize = (s) =>
+  s
+    .replace(/-./g, (x) => x.toUpperCase()[1])
+    .replace(/^./g, (x) => x.toUpperCase()[0])
+
+let packageName = "."
+let componentName = "."
+let tmpDirectory = "."
 
 if (process.argv.length >= 3) {
-  folderName = process.argv[2]
-  if (!fs.existsSync(folderName)) {
-    fs.mkdirSync(folderName)
+  packageName = process.argv[2]
+  componentName = camelize(packageName)
+  tmpDirectory = `tmp-${packageName}`
+  if (!fs.existsSync(tmpDirectory)) {
+    fs.mkdirSync(tmpDirectory)
   }
 }
 
-// Need a better solution!
-const clone = spawn("git", [
+const replacePackageName = () => {
+  const files = [
+    "index.tsx",
+    "package.json",
+    "README.md",
+    "rollup.config.js",
+    "styles.ts",
+    "stories/default.tsx",
+  ]
+
+  return Promise.all(
+    files.map((filename) => {
+      return fsPromises
+        .readFile(`${packageName}/${filename}`, "utf8")
+        .then((contents) => {
+          const packageNameRegex = /__PACKAGE_NAME__/g
+          const componentNameRegex = /__COMPONENT_NAME__/g
+          const replacedContents = contents
+            .replace(packageNameRegex, packageName)
+            .replace(componentNameRegex, componentName)
+
+          return fsPromises.writeFile(
+            `${packageName}/${filename}`,
+            replacedContents
+          )
+        })
+    })
+  )
+}
+
+execa("git", [
   "clone",
   "https://github.com/guardian/create-src-component.git",
-  folderName,
+  tmpDirectory,
 ])
-
-clone.on("close", (code) => {
-  if (code !== 0) {
-    console.error("cloning the template failed!")
-    process.exit(code)
-  } else {
-    console.log("Source component successfully created")
-  }
-})
+  .then(() => execa("cp", ["-r", `${tmpDirectory}/component/.`, packageName]))
+  .then(() => execa("rm", ["-rf", tmpDirectory]))
+  .then(() => replacePackageName())
+  .then(() => {
+    console.log(`${packageName} component successfully created`)
+  })
+  .catch((err) => {
+    console.error(`ERROR: ${err}`)
+    process.exit(1)
+  })
