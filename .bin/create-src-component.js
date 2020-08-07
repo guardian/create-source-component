@@ -29,6 +29,7 @@ const replacePackageName = () => {
     "README.md",
     "rollup.config.js",
     "styles.ts",
+    "stories.tsx",
     "stories/default.tsx",
   ]
 
